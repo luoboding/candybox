@@ -1,4 +1,4 @@
-var bookshelf = require('./../utils/bookshelf.js');
+var bookshelf = require('./../../utils/bookshelf.js');
 var ManageAuthModel = require('./manager-auth-model');
 
 var ManagerModel = bookshelf.Model.extend({

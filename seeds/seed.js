@@ -1,10 +1,9 @@
 var moment = require('moment');
-console.log('moment', moment().valueOf());
 exports.seed = function(knex, Promise) {
   return Promise.join(
-    // Deletes ALL existing entries
     knex('manager_auth').del(),
     knex('manager').del(),
+
     // Inserts seed entries
     knex('manager').insert({
       id: 1,

@@ -1,9 +1,28 @@
 var parse = require('co-body');
+var ManagerModel = require('./../models/manager-model');
+
 module.exports = function () {
   'use strict';
   return function*() {
+    var self = this;
     var post = yield parse(this);
-    console.log('post:', post);
-    return this.body = "<h1>Hello! This is my home page!</h1>";
-  }
+    var username = post.username;
+    var password = post.password;
+    var condition = {
+      username: username,
+      password: password
+    };
+    ManagerModel.where(condition).fetch().then(function (manager) {
+      if (manager) {
+        console.log('manager', manager.toJSON());
+      } else {
+        console.log('manager not ok');
+      }
+    }, function (error) {
+      console.log('error', error);
+    });
+
+    this.status = 200;
+    return this;
+  };
 };

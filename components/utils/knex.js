@@ -1,16 +1,4 @@
 var Knex = require('knex');
-var knex = Knex({
-  client: 'mysql',
-  connection: {
-    host : 'localhost',
-    user : 'root',
-    password : '',
-    database : 'candybox',
-    charset  : 'utf8'
-  },
-  migrations: {
-   tableName: 'migrations'
- }
-});
-
+var config = require('./../../knexfile.js');
+var knex = Knex(config.dev);
 module.exports = knex;
