@@ -8,4 +8,4 @@ this is  core module, make sure you have installed nodejs
   - knex seed:run --env=dev 初始化数据库表数据
 
 ### run
-  - node --harmony server.js
+  - npm run server

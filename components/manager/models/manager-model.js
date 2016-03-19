@@ -6,6 +6,8 @@ var ManagerModel = bookshelf.Model.extend({
   manageAuth: function () {
     return this.hasMany(ManageAuthModel);
   }
+}, {
+  //custom method here
 });
 
 module.exports = ManagerModel;
