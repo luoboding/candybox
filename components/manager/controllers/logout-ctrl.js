@@ -17,6 +17,8 @@ module.exports = function () {
     var destroyGenerator = co(function *() {
       return yield ManagerAuthModel.where(condition).destroy();
     });
+    yield destroyGenerator;
+
     this.response.status = 204;
   };
 };
