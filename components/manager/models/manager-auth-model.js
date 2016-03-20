@@ -10,14 +10,9 @@ var ManagerAuthModel = bookshelf.Model.extend({
   }
 }, {
   generateToken: function (userId) {
-    return jwt.sign({
+    return md5(jwt.sign({
         id: userId
-    }, 'cAndYbOx');
-  },
-
-  verifyToken: function (token, id) {
-    var user = jwt.verify(token, 'cAndYbOx');
-    return user.id == id;
+    }, 'cAndYbOx'));
   },
 
   getExpireTime: function () {

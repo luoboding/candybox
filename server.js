@@ -1,8 +1,10 @@
 //this is a http server of project
 var koa = require('koa');
-// app.use(route.get('/', index));
-// app.use(route.get('/login', login));
+var router = require('koa-router')();
 var server = koa();
-require('./components/manager')(server);
+require('./components/manager')(router);
+var authFilter = require('./components/common/filters/auth-filter');
+server.use(router.routes())
+      .use(router.allowedMethods());
 server.listen(8088);
-console.log('server running on port 8008');
+console.log('server running on port 8088');

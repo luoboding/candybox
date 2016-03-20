@@ -1,8 +1,12 @@
 //define route and combine controller here
-var route = require('koa-route');
-var LoginController = require('./controllers/login-ctrl');
 
-module.exports = function (app){
+var LoginController = require('./controllers/login-ctrl');
+var LogoutController = require('./controllers/logout-ctrl');
+var authorize = require('./../common/filters/auth-filter');
+var RegisterCotroller = require('./controllers/register-ctrl');
+module.exports = function (router){
   'use strict';
-  app.use(route.post('/manager', LoginController()));
+  router.post('/manager/auth', LoginController());
+  router.delete('/manager/auth', authorize(), LogoutController());
+  router.post('/manager', RegisterCotroller());
 };
